@@ -5,15 +5,15 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 5.0"  # Usamos la versión 5.x de AWS
+      version = "~> 5.0" # Usamos la versión 5.x de AWS
     }
     tls = {
       source  = "hashicorp/tls"
-      version = "~> 4.0"  # Para generar las llaves SSH
+      version = "~> 4.0" # Para generar las llaves SSH
     }
     local = {
       source  = "hashicorp/local"
-      version = "~> 2.0"  # Para guardar archivos en tu máquina
+      version = "~> 2.0" # Para guardar archivos en tu máquina
     }
   }
 }

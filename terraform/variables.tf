@@ -31,19 +31,19 @@ variable "app_port" {
 variable "mongodb_uri" {
   description = "URI de conexión a MongoDB Atlas"
   type        = string
-  sensitive   = true  # Esto evita que se muestre en los logs
+  sensitive   = true # Esto evita que se muestre en los logs
 }
 
 variable "allowed_ssh_cidr" {
   description = "IPs que pueden conectarse por SSH (usa tu_ip/32 para mayor seguridad)"
   type        = list(string)
-  default     = ["0.0.0.0/0"]  # 0.0.0.0/0 significa "desde cualquier IP"
+  default     = ["0.0.0.0/0"] # 0.0.0.0/0 significa "desde cualquier IP"
 }
 
 variable "allowed_api_cidr" {
   description = "IPs que pueden acceder a tu API"
   type        = list(string)
-  default     = ["0.0.0.0/0"]  # Público para que cualquiera pueda usar tu API
+  default     = ["0.0.0.0/0"] # Público para que cualquiera pueda usar tu API
 }
 
 variable "github_repo_url" {
