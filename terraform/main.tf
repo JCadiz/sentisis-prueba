@@ -52,7 +52,7 @@ resource "aws_security_group" "app_sg" {
 
   # Permite conexiones SSH solo desde tu IP
   ingress {
-    description = "SSH para administración"
+    description = "SSH para administracion"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
@@ -61,7 +61,7 @@ resource "aws_security_group" "app_sg" {
 
   # Permite acceso a tu API desde cualquier lugar
   ingress {
-    description = "API de la aplicación"
+    description = "API de la aplicacion"
     from_port   = var.app_port
     to_port     = var.app_port
     protocol    = "tcp"

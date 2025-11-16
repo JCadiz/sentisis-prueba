@@ -54,7 +54,7 @@ MONGODB_URI_SECRET="${mongodb_uri}"
 cat > .env <<EOF
 NODE_ENV=production
 PORT=${app_port}
-MONGODB_URI=$MONGODB_URI_SECRET
+MONGO_URI=$MONGODB_URI_SECRET
 AWS_REGION=${aws_region}
 EOF
 
