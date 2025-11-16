@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(terraform fmt:*)"
+      "Bash(terraform fmt:*)",
+      "Bash(pnpm --version:*)"
     ],
     "deny": [],
     "ask": []
