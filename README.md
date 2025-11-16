@@ -278,24 +278,24 @@ Al finalizar verás:
 ```bash
 Outputs:
 
-api_url = "http://98.92.156.166:3000"
-instance_public_ip = "98.92.156.166"
-ssh_command = "ssh -i sentisis-test-key.pem ubuntu@98.92.156.166"
+api_url = "http://3.235.238.53:3000"
+instance_public_ip = "3.235.238.53"
+ssh_command = "ssh -i sentisis-test-key.pem ubuntu@3.235.238.53"
 ```
 
 **Probar la API:**
 ```bash
-curl http://98.92.156.166:3000/api/tasks
+curl http://3.235.238.53:3000/api/tasks
 ```
 
 **Swagger UI:**
 ```
-http://98.92.156.166:3000/api-docs
+http://3.235.238.53:3000/api-docs/
 ```
 
 **SSH al servidor:**
 ```bash
-ssh -i sentisis-test-key.pem ubuntu@98.92.156.166
+ssh -i sentisis-test-key.pem ubuntu@3.235.238.53
 
 # Ver logs
 docker logs -f sentisis-test
@@ -453,56 +453,6 @@ sintesis-prueba/
 
 ---
 
-### ⚠️ Qué se Omitió (y por qué)
-
-#### 1. **Autenticación y Autorización**
-**Omitido:** JWT, login, roles de usuario
-
-**Razonamiento:** No estaba en los requisitos. Agregarlo hubiera añadido complejidad innecesaria. Sin embargo, la arquitectura está preparada para agregar autenticación fácilmente:
-- Ya existe middleware `validateToken.ts` (comentado)
-- Ya existe middleware `validateRole.ts` (comentado)
-- Solo se necesitaría crear los casos de uso de Auth
-
-#### 2. **Actualización Completa de Tareas**
-**Omitido:** Endpoint PUT para actualizar título/descripción
-
-**Razonamiento:** El challenge solo pide "marcar como realizadas". Agregué PATCH para cambiar el estatus. Un PUT completo sería simple de agregar si se necesita.
-
-#### 3. **Eliminación de Tareas**
-**Omitido:** Endpoint DELETE
-
-**Razonamiento:** No estaba en los requisitos. En producción real, probablemente usaría "soft delete" (marcar como eliminado) en lugar de borrar físicamente.
-
-#### 4. **Tests Unitarios Completos**
-**Implementado parcialmente:** Solo test de ejemplo
-
-**Razonamiento:** Por tiempo, solo implementé un test de ejemplo. En producción, tendría:
-- Unit tests para cada use case (>80% coverage)
-- Integration tests para repositories
-- E2E tests para endpoints
-
-La arquitectura facilita el testing porque cada capa es independiente.
-
-#### 5. **Rate Limiting**
-**Omitido:** Limitación de peticiones por IP
-
-**Razonamiento:** Para una demo es innecesario. En producción agregaría `express-rate-limit`.
-
-#### 6. **Base de Datos Local**
-**Omitido:** MongoDB local con Docker Compose
-
-**Razonamiento:** Usé MongoDB Atlas porque:
-- Más fácil para que reclutadores prueben (no necesitan instalar MongoDB)
-- Es lo que se usa en producción real
-- El challenge no especificaba local
-
-#### 7. **Caché**
-**Omitido:** Redis para caché
-
-**Razonamiento:** Premature optimization. Para el volumen de una demo no es necesario. Sería el siguiente paso en producción real.
-
----
-
 ### 🎯 Decisiones Clave
 
 | Decisión | Alternativa Considerada | Por qué elegí esto |
@@ -515,7 +465,6 @@ La arquitectura facilita el testing porque cada capa es independiente.
 | Swagger | Postman collection | Autodocumentado, siempre actualizado |
 | Winston | console.log | Logging estructurado para producción |
 | Path aliases | Imports relativos | Código más limpio |
-| Docker multi-stage | Dockerfile simple | Build size más pequeño (250MB vs 800MB) |
 
 ---
 
@@ -581,33 +530,6 @@ pnpm test             # Ejecutar tests
 pnpm run init-db      # Cargar datos iniciales
 pnpm run lint         # Verificar código con ESLint
 ```
-
----
-
-## 📦 Variables de Entorno
-
-```env
-# Server
-PORT=3000
-NODE_ENV=production
-
-# Database
-MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/sentisis
-
-# AWS (solo para deployment)
-AWS_REGION=us-east-1
-```
-
----
-
-## 💰 Costos Estimados (AWS)
-
-Con el **AWS Free Tier**:
-- EC2 t2.micro: **GRATIS** (primeros 12 meses, 750 horas/mes)
-- AWS Secrets Manager: **~$0.40/mes**
-- Data Transfer: **GRATIS** (primeros 15 GB/mes)
-
-**Total:** ~$0.40 USD/mes (o $0 usando variables de entorno)
 
 ---
 
