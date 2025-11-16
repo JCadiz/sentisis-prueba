@@ -1,0 +1,16 @@
+# AWS Configuration
+aws_region    = "us-east-1"
+environment   = "production"
+instance_type = "t2.micro"
+
+# Application Configuration
+app_name = "sentisis-test"
+app_port = 3000
+
+# MongoDB Configuration (REQUIRED)
+# Para configurarla: $env:TF_VAR_mongodb_uri = "mongodb+srv://..."
+
+# Security Configuration
+# IMPORTANT: For production, restrict these to specific IP ranges
+allowed_ssh_cidr = ["0.0.0.0/0"]  # SSH access - CHANGE THIS!
+allowed_api_cidr = ["0.0.0.0/0"]  # API access - typically open for public APIs
