@@ -3,7 +3,7 @@
 
 # Crea la "caja fuerte" donde se guardará la URI de MongoDB
 resource "aws_secretsmanager_secret" "mongodb_uri" {
-  name        = "${var.app_name}-${var.environment}-mongodb-uri-v2"
+  name        = "${var.app_name}-${var.environment}-mongodb-uri-v3"
   description = "Cadena de conexión a MongoDB Atlas para ${var.app_name}"
 
   tags = merge(local.common_tags, {

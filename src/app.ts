@@ -21,8 +21,17 @@ class App {
 
     // Configuración de middlewares globales
     private initializeMiddlewares(): void {
-        // Seguridad con Helmet
-        this.app.use(helmet());
+        // Seguridad con Helmet (configurado para permitir Swagger UI)
+        this.app.use(helmet({
+            contentSecurityPolicy: {
+                directives: {
+                    defaultSrc: ["'self'"],
+                    styleSrc: ["'self'", "'unsafe-inline'"],
+                    scriptSrc: ["'self'", "'unsafe-inline'"],
+                    imgSrc: ["'self'", "data:", "validator.swagger.io"],
+                },
+            },
+        }));
 
         // CORS para permitir peticiones desde otros dominios
         this.app.use(cors({
