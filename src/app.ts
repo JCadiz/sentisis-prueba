@@ -31,6 +31,8 @@ class App {
                     imgSrc: ["'self'", "data:", "validator.swagger.io"],
                 },
             },
+            hsts: false, // Desactiva HSTS porque no tenemos SSL
+            crossOriginOpenerPolicy: false, // Desactiva COOP para HTTP
         }));
 
         // CORS para permitir peticiones desde otros dominios
