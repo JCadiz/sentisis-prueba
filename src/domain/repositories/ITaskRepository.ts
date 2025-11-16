@@ -22,5 +22,4 @@ export interface ITaskRepository {
     findById(id: string): Promise<Task | null>;
     findAll(options?: PaginationOptions): Promise<PaginatedResult<Task>>;
     updateCompleted(id: string, data: UpdateTaskDto): Promise<Task | null>;
-    delete(id: string): Promise<boolean>;
 }

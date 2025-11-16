@@ -8,12 +8,12 @@ import { config } from './env';
 const swaggerDefinition = {
     openapi: '3.0.0',
     info: {
-        title: 'Sintesis Test API',
+        title: 'Sentisis Test API',
         version: '1.0.0',
         description: 'API REST desarrollada con TypeScript, Express y MongoDB aplicando Clean Architecture',
         contact: {
             name: 'Jesus Cadiz',
-            email: 'jesus@example.com',
+            email: 'jesuscadiz22@gmail.com',
         },
         license: {
             name: 'ISC',
@@ -76,53 +76,7 @@ const swaggerDefinition = {
                 },
             },
         },
-        securitySchemes: {
-            bearerAuth: {
-                type: 'http',
-                scheme: 'bearer',
-                bearerFormat: 'JWT',
-                description: 'Ingresa el token JWT en el formato: Bearer {token}',
-            },
-            tokenAuth: {
-                type: 'apiKey',
-                in: 'header',
-                name: 'token',
-                description: 'Token JWT sin el prefijo Bearer',
-            },
-        },
         responses: {
-            UnauthorizedError: {
-                description: 'Token de acceso faltante o inválido',
-                content: {
-                    'application/json': {
-                        schema: {
-                            type: 'object',
-                            properties: {
-                                error: {
-                                    type: 'string',
-                                    example: 'Invalid Token',
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-            ForbiddenError: {
-                description: 'Permisos insuficientes',
-                content: {
-                    'application/json': {
-                        schema: {
-                            type: 'object',
-                            properties: {
-                                error: {
-                                    type: 'string',
-                                    example: 'No tienes los permisos suficientes para realizar dicha acción',
-                                },
-                            },
-                        },
-                    },
-                },
-            },
             NotFoundError: {
                 description: 'Recurso no encontrado',
                 content: {
@@ -174,10 +128,6 @@ const swaggerDefinition = {
         },
     },
     tags: [
-        {
-            name: 'Health',
-            description: 'Endpoints de salud del sistema',
-        },
         {
             name: 'Tasks',
             description: 'Gestión de tareas (TODO list)',

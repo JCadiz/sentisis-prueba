@@ -23,7 +23,7 @@ const TaskSchema = new Schema<ITaskDocument>(
         descripcion: {
             type: String,
             trim: true,
-            maxlength: [1000, 'La descripción no puede exceder 1000 caracteres'],
+            maxlength: [500, 'La descripción no puede exceder 500 caracteres'],
         },
         estatus: {
             type: Boolean,
@@ -38,7 +38,7 @@ const TaskSchema = new Schema<ITaskDocument>(
     {
         timestamps: true, // Crea automáticamente createdAt y updatedAt
         collection: 'tasks',
-        versionKey: 'schema_version', // Mantiene el campo __v
+        versionKey: 'schema_version', 
     }
 );
 

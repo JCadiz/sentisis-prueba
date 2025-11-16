@@ -12,10 +12,6 @@ export const config = {
     // Base de datos
     mongoUri: process.env.MONGO_URI || '',
 
-    // JWT
-    tokenKey: process.env.TOKEN_KEY || process.env.JWT_SECRET || '',
-    tokenExpiration: process.env.TOKEN_EXPIRATION || '8h',
-
     // CORS
     corsOrigin: process.env.CORS_ORIGIN || '*',
 
@@ -25,10 +21,10 @@ export const config = {
 
 // Validar que las variables requeridas estén configuradas
 export const validateEnv = (): void => {
-    const requiredEnvVars = ['MONGO_URI', 'TOKEN_KEY'];
+    const requiredEnvVars = ['MONGO_URI'];
 
     const missingEnvVars = requiredEnvVars.filter(
-        (envVar) => !process.env[envVar] && !process.env[envVar.replace('TOKEN_KEY', 'JWT_SECRET')]
+        (envVar) => !process.env[envVar]
     );
 
     if (missingEnvVars.length > 0) {

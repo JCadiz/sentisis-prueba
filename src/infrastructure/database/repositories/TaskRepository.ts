@@ -65,11 +65,6 @@ export class TaskRepository implements ITaskRepository {
         return this.mapToEntity(task);
     }
 
-    async delete(id: string): Promise<boolean> {
-        const result = await TaskModel.findByIdAndDelete(id);
-        return result !== null;
-    }
-
     // Mapear documento de Mongoose a entidad de dominio
     private mapToEntity(doc: any): Task {
         return {
