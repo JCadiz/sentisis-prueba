@@ -21,16 +21,9 @@ class App {
 
     // Configuración de middlewares globales
     private initializeMiddlewares(): void {
-        // Seguridad con Helmet (configurado para permitir Swagger UI)
+        // Seguridad con Helmet (CSP desactivado para permitir Swagger UI)
         this.app.use(helmet({
-            contentSecurityPolicy: {
-                directives: {
-                    defaultSrc: ["'self'"],
-                    styleSrc: ["'self'", "'unsafe-inline'"],
-                    scriptSrc: ["'self'", "'unsafe-inline'"],
-                    imgSrc: ["'self'", "data:", "validator.swagger.io"],
-                },
-            },
+            contentSecurityPolicy: false, // Desactiva CSP para permitir Swagger
             hsts: false, // Desactiva HSTS porque no tenemos SSL
             crossOriginOpenerPolicy: false, // Desactiva COOP para HTTP
         }));
