@@ -132,7 +132,7 @@ docker build -t sentisis-test .
 
 # Ejecutar contenedor
 docker run -p 3000:3000 \
-  -e MONGODB_URI="mongodb+srv://..." \
+  -e MONGO_URI="mongodb+srv://..." \
   sentisis-test
 ```
 
